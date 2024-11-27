@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 public class xxx {
     //         학생 목록 출력 함수
-        static void prtMatrix(float[][] argMatrix, int numbers) {
-            if (numbers == 0) {
-                System.out.println("입력된 학생 정보가 없습니다.");
-                return;
-            }
-            for (int i = 0 ; i < numbers ; i++) {
-                for (int j = 0 ; j < argMatrix[i].length ; j++) {
-                    System.out.print(argMatrix[i][j] + " ");
-                }
-                System.out.println();
-            }
+    static void prtMatrix(float[][] argMatrix, int numbers) {
+        if (numbers == 0) {
+            System.out.println("입력된 학생 정보가 없습니다.");
+            return;
         }
+        for (int i = 0 ; i < numbers ; i++) {
+            for (int j = 0 ; j < argMatrix[i].length ; j++) {
+                System.out.print(argMatrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         // 사용자에게 메뉴를 출력하여 입력에 따라 다양한 동작을 수행하는 프로그램 작성
@@ -68,9 +68,12 @@ public class xxx {
                 case 2:
                     prtMatrix(studentScore, count);
                     break;
-
                 // 학생 삭제하기
                 case 3:
+                    // 행렬의 행 개수 저장
+                    int totalRows = studentScore.length;
+                    // 삭제할 인덱스 저장
+                    int removeIndex = 0;
                     // 현재 입력된 학생들의 목록을 출력
                     // 삭제할 학생의 학번을 입력받음
                     System.out.print("삭제할 학생의 학번을 입력하세요 : ");
@@ -82,8 +85,26 @@ public class xxx {
                         System.out.println("삭제 메뉴 종료");
                         break;
                     }
+                    // 입력한 학번의 인덱스 찾기
+                    for (int i = 0 ; i < totalRows ; i++) {
+                        if (deletId == i) {
+                            removeIndex = i;
+                            break;
+                        }
+                    }
+                    // 삭제한 행 뒤의 행들을 위로 이동시킴
+                    for (int i = removeIndex ; i < totalRows - 1; i++) {
+                        for (int j = i; j < studentScore[i].length - 1; j++) {
+                            studentScore[i][j] = studentScore[i + 1][j];
+                        }
+                    }
+                    // 마지막 행을 0으로 초기화
+                    for (int j = 0; j < studentScore[totalRows - 1].length; j++) {
+                        studentScore[totalRows - 1][j] = 0;
+                    }
                     // 삭제 완료 후 업데이트된 목록 출력
                     prtMatrix(studentScore, count);
+                    count--;
                     break;
 
                 default:
