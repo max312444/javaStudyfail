@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class yyy {
+public class qqq {
     static void prtMatrix(float[][] argMatrix, int numbers) {
         String[] printPart = {"학번", "국어", "영어", "수학", "합계", "평균"};
         if (numbers == 0) {
@@ -56,8 +56,8 @@ public class yyy {
             switch (userInput) {
                 // 학생 성적 입력
                 case 1:
+                    // 학생 수가 기존 배열 수를 넘어설 때 배열 크기 증가
                     if (studentCount >= studentScore.length) {
-
                         // 배열 크기를 늘릴 때 전에 있던 데이터 저장용 배열 생성
                         float[][] newMatrix = new float[studentScore.length * 2][NUM_OF_COL];
 
@@ -70,15 +70,14 @@ public class yyy {
 
                         System.out.println("배열이 확장되었습니다. 새로운 크기: " + NUM_OF_ROW);
                     }
-
                     // 중복된 학번의 인덱스 번호 저장 용
                     int duplicationId = 0;
                     // 덮어쓰기 여부 입력 용
                     String usedIdcheck = "";
                     System.out.print("학번을 입력하세요 : ");
-                    studentScore[studentCount][0] = sc.nextFloat();
+                    float userId = sc.nextFloat();
                     for (int i = 0 ; i < studentCount ; i++) {
-                        if (studentScore[i][0] == studentScore[studentCount][0]) {
+                        if ((int) studentScore[i][0] == userId) {
                             duplicationId = i;
                             System.out.println("중복된 학번입니다.");
                             System.out.println("덮어쓰기를 희망합니까? (y: 덮어쓰기 진행, q: 메뉴로 돌아가기): \t");
@@ -86,24 +85,27 @@ public class yyy {
                         }
                     }
                     if (usedIdcheck.equals("y")) {
+                        studentScore[duplicationId][0] = userId;
                         System.out.print("국어 성적 : ");
                         studentScore[duplicationId][1] = sc.nextFloat();
                         System.out.print("영어 성적 : ");
                         studentScore[duplicationId][2] = sc.nextFloat();
                         System.out.print("수학 성적 : ");
                         studentScore[duplicationId][3] = sc.nextFloat();
-                        System.out.println("덮어쓰기가 완료되었습니다.\n");
+                        System.out.println("입력이 완료되었습니다.\n");
                         // 합계
                         studentScore[duplicationId][4] = studentScore[duplicationId][1] + studentScore[duplicationId][2] + studentScore[duplicationId][3] ;
                         // 평균
                         studentScore[duplicationId][5] = studentScore[duplicationId][4] / 3.0f;
                         break;
+
                     } else if (usedIdcheck.equals("q")) {
                         System.out.println("입력이 취소되었습니다. 메뉴로 돌아갑니다.");
                         break;
                     }
                     // 입력된 학번의 성적을 차례로 입력 - 배열에 저장 (배열의 자료형은 float형이다.)
                     // 합계와 평균 계산하여 해당 필드에 저장
+                    studentScore[studentCount][0] = userId;
                     System.out.print("국어 성적 : ");
                     studentScore[studentCount][1] = sc.nextFloat();
                     System.out.print("영어 성적 : ");
@@ -157,8 +159,8 @@ public class yyy {
                     }
                     // 삭제 완료 후 업데이트된 목록 출력
                     System.out.println("삭제가 완료되었습니다.");
-                    studentCount--;
                     prtMatrix(studentScore, studentCount);
+                    studentCount--;
                     break;
 
                 default:
