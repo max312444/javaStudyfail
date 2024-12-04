@@ -80,7 +80,7 @@ public class qqq {
                         if ((int) studentScore[i][0] == userId) {
                             duplicationId = i;
                             System.out.println("중복된 학번입니다.");
-                            System.out.println("덮어쓰기를 희망합니까? (y: 덮어쓰기 진행, q: 메뉴로 돌아가기): \t");
+                            System.out.print("덮어쓰기를 희망합니까? (y: 덮어쓰기 진행, q: 메뉴로 돌아가기): ");
                             usedIdcheck = sc.next();
                         }
                     }
