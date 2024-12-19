@@ -43,14 +43,6 @@
 
 ---
 
-## 💡 커밋 통계
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=max312444&show_icons=true&count_private=true&hide=prs&theme=highcontrast" />
-</p>
-
----
-
 ## 📈 커밋 활동
 
 <p align="center">
@@ -59,11 +51,3 @@
 
 ---
 
-## 🛠️ 설치 및 실행 방법
-
-이 리포지토리에서 제공하는 코드를 실행하려면 Java 8 이상이 필요합니다.
-
-1. 이 저장소를 클론합니다:
-   ```bash
-   git clone https://github.com/your-username/java-learning-repo.git
-   cd java-learning-repo
